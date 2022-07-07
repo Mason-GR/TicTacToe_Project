@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <title>Tic Tac Toe</title>
   </head>
   <body>
-    <div class="game-grid" id="game-grid">
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
-      <div class="tile data-tile"></div>
+    <div class="game-grid" id="gameGrd">
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
     </div>
-    <div id="reset" class="reset-btn">
-      <button id="resetButton"></button>RESET GAME
+    <div class="winning-message" id="winningMsg">
+      <div data-winning-message-text></div>
+      <button id="restartBtn">Restart</button>
     </div>
-    <script src="app.js"></script>
   </body>
-  `
 </html>

@@ -1,0 +1,37 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --tile-size: 100px;
+  --input-size: cal(var(--tile-size) * 0.9);
+}
+
+body {
+  margin: 0;
+}
+
+.game-grid {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.tile {
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border: 1px solid black;
+}
+
+.tile:first-child,
+.tile:nth-child(2),
+:nth-child(3) {
+  border-top: none;
+}
