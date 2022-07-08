@@ -6,7 +6,7 @@
 
 :root {
   --tile-size: 100px;
-  --input-size: cal(var(--tile-size) * 0.9);
+  --input-size: calc(var(--tile-size) * 0.9);
 }
 
 body {
@@ -28,6 +28,9 @@ body {
   width: var(--tile-size);
   height: var(--tile-size);
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tile:first-child,
@@ -35,3 +38,33 @@ body {
 :nth-child(3) {
   border-top: none;
 }
+
+.tile:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.tile:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.tile:last-child,
+.tile:nth-child(8),
+.tile:nth-child(7) {
+  border-bottom: none;
+}
+
+.tile.x::before,
+.tile.x::after {
+  content: "";
+  width: calc(var(--input-size) * 0.15);
+  height: var(--input-size);
+  background-color: black;
+}
+
+.tile.x::before {
+  transform: rotate(45deg);
+}
+
+/* .tile.x::after {
+  transform: rotate(-45deg);
+} */
