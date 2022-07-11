@@ -6,7 +6,7 @@
 
 :root {
   --tile-size: 100px;
-  --input-size: calc(var(--tile-size) * 0.9);
+  --mark-size: calc(var(--tile-size) * 0.9);
 }
 
 body {
@@ -31,6 +31,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  cursor: pointer;
 }
 
 .tile:first-child,
@@ -53,18 +55,56 @@ body {
   border-bottom: none;
 }
 
+.tile.x,
+.tile.circle {
+  cursor: not-allowed;
+}
+
 .tile.x::before,
 .tile.x::after {
-  content: "";
-  width: calc(var(--input-size) * 0.15);
-  height: var(--input-size);
   background-color: black;
 }
 
-.tile.x::before {
+.game-grid.x .tile:not(.x):not(.circle):hover::before,
+.game-grid.x .tile:not(.x):not(.circle):hover::after {
+  background-color: lightgrey;
+}
+
+.tile.x::before,
+.tile.x::after,
+.game-grid.x .tile:not(.x):not(.circle):hover::before,
+.game-grid.x .tile:not(.x):not(.circle):hover::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--mark-size) * 0.15);
+  height: var(--mark-size);
+}
+
+.tile.x::before,
+.game-grid.x .tile:not(.x):not(.circle):hover::before {
   transform: rotate(45deg);
 }
 
-/* .tile.x::after {
+.tile.x::after,
+.game-grid.x .tile:not(.x):not(.circle):hover::after {
   transform: rotate(-45deg);
-} */
+}
+
+.tile.circle::before,
+.tile.circle::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.tile.circle::before {
+  width: var(--mark-size);
+  height: var(--mark-size);
+  background-color: black;
+}
+
+.tile.circle::after {
+  width: calc(var(--mark-size) * 0.7);
+  height: calc(var(--mark-size) * 0.7);
+  background-color: white;
+}
