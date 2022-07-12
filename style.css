@@ -61,12 +61,14 @@ body {
 }
 
 .tile.x::before,
-.tile.x::after {
+.tile.x::after,
+.tile.circle::before {
   background-color: black;
 }
 
 .game-grid.x .tile:not(.x):not(.circle):hover::before,
-.game-grid.x .tile:not(.x):not(.circle):hover::after {
+.game-grid.x .tile:not(.x):not(.circle):hover::after,
+.game-grid.circle .tile:not(.x):not(.circle):hover::before {
   background-color: lightgrey;
 }
 
@@ -91,20 +93,56 @@ body {
 }
 
 .tile.circle::before,
-.tile.circle::after {
+.tile.circle::after,
+.game-grid.circle .tile:not(.x):not(.circle):hover::before,
+.game-grid.circle .tile:not(.x):not(.circle):hover::after {
   content: "";
   position: absolute;
   border-radius: 50%;
 }
 
-.tile.circle::before {
+.tile.circle::before,
+.game-grid.circle .tile:not(.x):not(.circle):hover::before {
   width: var(--mark-size);
   height: var(--mark-size);
-  background-color: black;
 }
 
-.tile.circle::after {
+.tile.circle::after,
+.game-grid.circle .tile:not(.x):not(.circle):hover::after {
   width: calc(var(--mark-size) * 0.7);
   height: calc(var(--mark-size) * 0.7);
   background-color: white;
+}
+
+.win-state {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.win-state button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.win-state button:hover {
+  background-color: black;
+  color: white;
+  border: white;
+}
+
+.win-state.display {
+  display: flex;
 }

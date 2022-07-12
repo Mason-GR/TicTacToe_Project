@@ -9,9 +9,9 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <div class="game-grid circle" id="gameGrd">
-      <div class="tile x" data-tile></div>
-      <div class="tile circle" data-tile></div>
+    <div class="game-grid" id="gameGrd">
+      <div class="tile" data-tile></div>
+      <div class="tile" data-tile></div>
       <div class="tile" data-tile></div>
       <div class="tile" data-tile></div>
       <div class="tile" data-tile></div>
@@ -20,8 +20,8 @@
       <div class="tile" data-tile></div>
       <div class="tile" data-tile></div>
     </div>
-    <div class="winning-message" id="winningMsg">
-      <div data-winning-message-text></div>
+    <div class="win-state" id="winState">
+      <div data-win-state-text>Player 1 WINS!</div>
       <button id="restartBtn">Restart</button>
     </div>
   </body>
