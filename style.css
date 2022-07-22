@@ -6,7 +6,7 @@
 
 :root {
   --tile-size: 100px;
-  --mark-size: calc(var(--tile-size) * 0.9);
+  --input-size: calc(var(--tile-size) * 0.9);
 }
 
 body {
@@ -78,8 +78,8 @@ body {
 .game-grid.x .tile:not(.x):not(.circle):hover::after {
   content: "";
   position: absolute;
-  width: calc(var(--mark-size) * 0.15);
-  height: var(--mark-size);
+  width: calc(var(--input-size) * 0.15);
+  height: var(--input-size);
 }
 
 .tile.x::before,
@@ -103,14 +103,14 @@ body {
 
 .tile.circle::before,
 .game-grid.circle .tile:not(.x):not(.circle):hover::before {
-  width: var(--mark-size);
-  height: var(--mark-size);
+  width: var(--input-size);
+  height: var(--input-size);
 }
 
 .tile.circle::after,
 .game-grid.circle .tile:not(.x):not(.circle):hover::after {
-  width: calc(var(--mark-size) * 0.7);
-  height: calc(var(--mark-size) * 0.7);
+  width: calc(var(--input-size) * 0.7);
+  height: calc(var(--input-size) * 0.7);
   background-color: white;
 }
 
