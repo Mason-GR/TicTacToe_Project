@@ -12,16 +12,25 @@ const WIN_COMBOS = [
 ];
 const tileElements = document.querySelectorAll("[data-tile]");
 const gameGrd = document.getElementById("gameGrd");
+const winStateElement = document.getElementById("winState");
+const restartBtn = document.getElementById("restartBtn");
+const winStateTextElement = document.querySelector("[data-win-state-text]");
 let circlesTurn;
 
 gameStart();
 
+restartBtn.addEventListener("click", gameStart);
+
 function gameStart() {
   circlesTurn = false;
   tileElements.forEach((tile) => {
+    tile.classList.remove(X_CLASS);
+    tile.classList.remove(CIRCLE_CLASS);
+    tile.removeEventListener("click", handleClick);
     tile.addEventListener("click", handleClick, { once: true });
   });
   setGameGrdHoverClass();
+  winStateElement.classList.remove("display");
 }
 
 function handleClick(e) {
@@ -32,11 +41,33 @@ function handleClick(e) {
   // Check For Winner
   if (isWinner(currentClass)) {
     endGame(false);
+    // Check for Draw
+  } else if (isDraw()) {
+    endGame(true);
+  } else {
+    // Switch Turn
+    switchTurns();
+    setGameGrdHoverClass();
   }
-  // Check for Draw
-  // Switch Turn
-  switchTurns();
-  setGameGrdHoverClass();
+}
+
+function endGame(draw) {
+  if (draw) {
+    winStateTextElement.innerText = "DRAW!";
+  } else {
+    winStateTextElement.innerText = `${
+      circlesTurn ? "Player 2" : "Player 1"
+    } WINS!`;
+  }
+  winStateElement.classList.add("display");
+}
+
+function isDraw() {
+  return [...tileElements].every((tile) => {
+    return (
+      tile.classList.contains(X_CLASS) || tile.classList.contains(CIRCLE_CLASS)
+    );
+  });
 }
 
 function placeInput(tile, currentClass) {
