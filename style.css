@@ -7,6 +7,10 @@
 :root {
   --tile-size: 100px;
   --input-size: calc(var(--tile-size) * 0.9);
+  --bg-color: #1e1e24;
+  --primary-color: #fff8f0;
+  --x-primary-color: #4a4a59;
+  --circle-primary-color: #594a4a;
 }
 
 body {
@@ -114,13 +118,15 @@ body {
   background-color: white;
 }
 
-.win-state {
+.win-state,
+.pick-players {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
@@ -129,7 +135,8 @@ body {
   flex-direction: column;
 }
 
-.win-state button {
+.win-state button,
+.pick-players button {
   font-size: 3rem;
   background-color: white;
   border: 1px solid black;
@@ -137,10 +144,15 @@ body {
   cursor: pointer;
 }
 
-.win-state button:hover {
+.win-state button:hover,
+.pick-players button:hover {
   background-color: black;
   color: white;
   border: white;
+}
+
+.pick-players.win-state.display {
+  display: flex;
 }
 
 .win-state.display {
